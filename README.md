@@ -54,8 +54,7 @@ Arduino-based oscillometric blood pressure measurement prototype. The system inf
 4. Open Serial Monitor at **115200 baud**
 5. Press the start button to begin a measurement cycle
 
-**[INSERT IMAGE: Serial Monitor output showing SBP/DBP/MAP/HR]**
-
+![Serial Monitor Output](media/Bp3.png)
 ---
 
 ## Notes / Calibration
