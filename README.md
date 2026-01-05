@@ -40,6 +40,38 @@ Arduino-based oscillometric blood pressure measurement prototype. The system inf
 
 ---
 
+## Validation/Results 
+### Subject 1: Human male age 20
+
+| Trial | Measurement | Our System | Commercial Sensor | Percent Difference |
+|------:|-------------|------------|-------------------|--------------------|
+| 1 | Systolic (mmHg) | 109.6 | 113 | 3.01% |
+|   | Diastolic (mmHg) | 71.8 | 64 | 12.19% |
+|   | Heart Rate (BPM) | 62.3 | 60 | 3.83% |
+| 2 | Systolic (mmHg) | 122.3 | 126 | 2.94% |
+|   | Diastolic (mmHg) | 64.5 | 63 | 2.38% |
+|   | Heart Rate (BPM) | 67.6 | 63 | 7.30% |
+| 3 | Systolic (mmHg) | 119.5 | 120 | 0.42% |
+|   | Diastolic (mmHg) | 75.8 | 70 | 8.29% |
+|   | Heart Rate (BPM) | 59.2 | 62 | 4.52% |
+
+### Subject 2: Human male age 19
+
+| Trial | Measurement | Our System | Commercial Sensor | Percent Difference |
+|------:|-------------|------------|-------------------|--------------------|
+| 1 | Systolic (mmHg) | 122.4 | 125 | 2.10% |
+|   | Diastolic (mmHg) | 73.4 | 68 | 7.64% |
+|   | Heart Rate (BPM) | 63.2 | 60 | 5.19% |
+| 2 | Systolic (mmHg) | 117.2 | 112 | 4.54% |
+|   | Diastolic (mmHg) | 69.5 | 72 | 3.53% |
+|   | Heart Rate (BPM) | 61.7 | 62 | 0.49% |
+| 3 | Systolic (mmHg) | 119.6 | 115 | 3.92% |
+|   | Diastolic (mmHg) | 77.1 | 75 | 2.65% |
+|   | Heart Rate (BPM) | 58.6 | 61 | 4.03% |
+
+Overall, systolic pressure measurements were typically within 5% of the commercial monitor, with larger variation observed in diastolic pressure due to sensitivity to cuff placement and motion.
+
+
 ## Running the Code
 
 1. Open `automatic_bp_cuff.ino` in the Arduino IDE
@@ -67,6 +99,7 @@ Arduino-based oscillometric blood pressure measurement prototype. The system inf
 
 - `README.md` — project overview
 - `automatic_bp_cuff.ino` — Arduino implementation
+- `media` - contains images used in README.md
 
 ---
 
