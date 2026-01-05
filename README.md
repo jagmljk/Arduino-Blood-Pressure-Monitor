@@ -2,18 +2,11 @@
 
 Arduino-based oscillometric blood pressure measurement prototype. The system inflates a cuff until a pressure threshold is reached, then samples cuff pressure and the oscillometric waveform during deflation to estimate **SBP**, **DBP**, **MAP**, and **Heart Rate**.
 
-> ⚠️ Educational prototype only — not a medical device.
-
----
-
-## Demo / Photos
-
-**[INSERT IMAGE: Full system photo (cuff + tubing + electronics)]**  
-![System Block Diagram](media/BP1.png)
-
 ---
 
 ## How it Works (Quick)
+
+![System Block Diagram](media/BP1.png)
 
 1. **Inflation**
    - Press the button to start the pump.
@@ -41,7 +34,7 @@ Arduino-based oscillometric blood pressure measurement prototype. The system inf
 - **Pump transistor control:** `D12`
 - **Start button:** `D8`
 
-**[INSERT IMAGE: Circuit schematic (sensor + conditioning + pump/valve drive)]**  
+![Circuit schematic (sensor + conditioning + pump/valve drive)](media/bp5.png)
 
 ![Band-pass filter schematic (~0.5–5 Hz)](media/Bp2.png)
 
