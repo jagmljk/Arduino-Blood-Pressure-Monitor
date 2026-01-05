@@ -55,6 +55,7 @@ Arduino-based oscillometric blood pressure measurement prototype. The system inf
 5. Press the start button to begin a measurement cycle
 
 ![Serial Monitor Output](media/Bp3.png)
+
 ---
 
 ## Notes / Calibration
