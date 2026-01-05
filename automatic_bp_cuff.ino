@@ -8,7 +8,6 @@
  *  - Mean Arterial Pressure (MAP)
  *  - Heart Rate
  *
- * This is an educational prototype, not a medical device.
  */
 
 #include <Arduino.h>
