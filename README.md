@@ -30,7 +30,7 @@ Arduino-based oscillometric blood pressure measurement prototype. The system inf
    - **DBP** found at ~**75%** of max amplitude (search forward).
    - **Heart rate** estimated from timing between detected peaks.
 
-**[INSERT IMAGE: Example plot (Pressure + Oscillometric waveform with SBP/MAP/DBP markers)]**
+![Pressure + Oscillometric waveform with SBP/MAP/DBP markers](media/bp4.png)
 
 ---
 
