@@ -1,75 +1,81 @@
-# Automatic Digital Blood Pressure Cuff (Oscillometric Method)
+# Arduino Oscillometric Blood Pressure Monitor
 
-An automatic digital blood pressure cuff that inflates and deflates autonomously and estimates **Systolic Blood Pressure (SBP)**, **Diastolic Blood Pressure (DBP)**, **Mean Arterial Pressure (MAP)**, and **Heart Rate** using the oscillometric method.
+Arduino-based oscillometric blood pressure measurement prototype. The system inflates a cuff until a pressure threshold is reached, then samples cuff pressure and the oscillometric waveform during deflation to estimate **SBP**, **DBP**, **MAP**, and **Heart Rate**.
 
-> ⚠️ This project is for educational purposes only and is **not** a medical device.
+> ⚠️ Educational prototype only — not a medical device.
 
 ---
 
-## Overview
+## Demo / Photos
 
-This system uses a pressure sensor and analog signal conditioning circuitry to measure cuff pressure and extract the oscillometric waveform caused by arterial pulsations. An Arduino controls the pump and valve, samples the signals, and computes blood pressure values during cuff deflation.
-
-**[INSERT IMAGE: Full system photo]**  
+**[INSERT IMAGE: Full system photo (cuff + tubing + electronics)]**  
 **[INSERT IMAGE: System block diagram]**
 
 ---
 
-## Hardware Summary
+## How it Works (Quick)
 
-- Pressure sensor
-- Instrumentation amplifier
-- Active band-pass filter (~0.5–5 Hz)
-- Arduino microcontroller
-- Air pump and normally-open solenoid valve
-- Pushbutton for measurement start
+1. **Inflation**
+   - Press the button to start the pump.
+   - Pump turns off automatically once the pressure signal crosses a threshold.
 
-**[INSERT IMAGE: Band-pass filter schematic]**
+2. **Sampling during deflation**
+   - Samples pressure (DC) and oscillometric (AC) signals at **30 Hz** for **30 seconds**.
+   - Data is processed in **1-second windows** (30 samples each).
 
----
+3. **Oscillometric processing**
+   - For each second, compute oscillometric **peak-to-peak amplitude** and associated average pressure.
+   - **MAP** = pressure at maximum oscillation amplitude.
+   - **SBP** found at ~**55%** of max amplitude (search backward).
+   - **DBP** found at ~**75%** of max amplitude (search forward).
+   - **Heart rate** estimated from timing between detected peaks.
 
-## Signal Processing Summary
-
-- Sample rate: **30 Hz**
-- Measurement duration: **~30 seconds**
-- Oscillometric amplitude computed in 1-second windows
-- MAP determined at maximum oscillation amplitude
-- SBP and DBP estimated using relative amplitude thresholds
-- Heart rate estimated from oscillation timing
-
-**[INSERT IMAGE: Pressure + oscillometric signal plot with SBP/MAP/DBP markers]**
+**[INSERT IMAGE: Example plot (Pressure + Oscillometric waveform with SBP/MAP/DBP markers)]**
 
 ---
 
-## Output
+## Hardware / Signals
 
-Computed values are printed to the Arduino Serial Monitor:
-- Systolic Blood Pressure
-- Diastolic Blood Pressure
-- Mean Arterial Pressure
-- Heart Rate
+- **Pressure input (DC / cuff pressure):** `A0`
+- **Oscillometric input (AC waveform):** `A1`
+- **Pump transistor control:** `D12`
+- **Start button:** `D8`
 
-**[INSERT IMAGE: Arduino serial monitor output]**
-
----
-
-## How to Run
-
-1. Assemble the hardware according to the design
-2. Upload the Arduino code
-3. Open the Serial Monitor (115200 baud)
-4. Press the start button to begin a measurement cycle
+**[INSERT IMAGE: Circuit schematic (sensor + conditioning + pump/valve drive)]**  
+**[INSERT IMAGE: Band-pass filter schematic (~0.5–5 Hz)]**
 
 ---
 
-## Notes
+## Running the Code
 
-- Sensor calibration is required to convert voltage to pressure (mmHg)
-- Inflation cutoff thresholds should be adjusted for safety
-- Results may vary based on sensor placement and user motion
+1. Open `automatic_bp_cuff.ino` in the Arduino IDE
+2. Select board + COM port
+3. Upload
+4. Open Serial Monitor at **115200 baud**
+5. Press the start button to begin a measurement cycle
+
+**[INSERT IMAGE: Serial Monitor output showing SBP/DBP/MAP/HR]**
 
 ---
 
-## Documentation
+## Notes / Calibration
 
-See `Final_Report.pdf` for full circuit design, analysis, and validation results.
+- Pressure conversion uses: `mmHg = volts * 50.0`  
+- Pump cutoff uses ADC threshold: `analogRead(A0) > 635` (≈ 3.0 V)
+- Oscillation processing uses:
+  - sample rate = 30 Hz
+  - total time = 30 s
+  - window size = 30 samples (1 second)
+
+---
+
+## Repo Contents
+
+- `README.md` — project overview
+- `automatic_bp_cuff.ino` — Arduino implementation
+
+---
+
+## Disclaimer
+
+This project pressurizes a cuff and estimates blood pressure from signals. Use caution and treat it as a lab prototype.
