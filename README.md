@@ -9,7 +9,7 @@ Arduino-based oscillometric blood pressure measurement prototype. The system inf
 ## Demo / Photos
 
 **[INSERT IMAGE: Full system photo (cuff + tubing + electronics)]**  
-![System Block Diagram](media/Bp1.png)
+![System Block Diagram](media/BP1.png)
 
 ---
 
